@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Symptom Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1 class="title">Health Symptom Checker</h1>
+    <div class="main-form">
+        <form action="/check-symptoms" method="POST">
+            <label for="symptoms">Enter your symptoms (comma separated):</label>
+            <input type="text" id="symptoms" name="symptoms" list="symptom-suggestions" placeholder="e.g., fever, cough, headache" required>
+            <datalist id="symptom-suggestions">
+                <option value="fever">
+                <option value="cough">
+                <option value="headache">
+                <option value="sore throat">
+                <option value="runny nose">
+                <option value="chest pain">
+                <option value="shortness of breath">
+                <option value="dizziness">
+                <option value="nausea">
+                <option value="vomiting">
+                <option value="diarrhea">
+                <option value="constipation">
+                <option value="back pain">
+                <option value="joint pain">
+                <option value="rash">
+                <option value="itching">
+                <option value="fatigue">
+                <option value="blurred vision">
+                <option value="ear pain">
+                <option value="abdominal pain">
+                <option value="swelling">
+                <option value="weight loss">
+                <option value="weight gain">
+                <option value="hair loss">
+                <option value="night sweats">
+                <option value="frequent urination">
+                <option value="dry mouth">
+                <option value="loss of appetite">
+                <option value="tremors">
+                <option value="memory loss">
+                <option value="confusion">
+                <option value="seizures">
+                <option value="fainting">
+            </datalist>
+            
+            <label for="severity">Enter duration or severity of symptoms (comma separated):</label>
+            <input type="text" id="severity" name="severity" list="severity-suggestions" placeholder="e.g., more than 3 days, mild, severe" required>
+            <datalist id="severity-suggestions">
+                <option value="more than 3 days">
+                <option value="less than 1 day">
+                <option value="high">
+                <option value="moderate">
+                <option value="low">
+                <option value="persistent">
+                <option value="intermittent">
+            </datalist>
+            
+            <label for="risk_factors">Enter your risk factors (comma separated):</label>
+            <input type="text" id="risk_factors" name="risk_factors" list="risk-factors-suggestions" placeholder="e.g., smoking, diabetes, hypertension" required>
+            <datalist id="risk-factors-suggestions">
+                <option value="immunocompromised">
+                <option value="elderly">
+                <option value="smoking">
+                <option value="asthma">
+                <option value="dehydration">
+                <option value="stress">
+                <option value="diabetes">
+                <option value="hypertension">
+                <option value="heart disease">
+                <option value="low blood pressure">
+                <option value="motion sickness">
+                <option value="pregnancy">
+                <option value="food poisoning">
+                <option value="stomach flu">
+                <option value="poor posture">
+                <option value="heavy lifting">
+                <option value="arthritis">
+                <option value="injury">
+                <option value="cold">
+                <option value="flu">
+                <option value="allergies">
+                <option value="skin irritation">
+                <option value="lack of sleep">
+                <option value="anemia">
+                <option value="eye strain">
+                <option value="ear infection">
+                <option value="swimmer's ear">
+                <option value="indigestion">
+                <option value="infection">
+                <option value="cancer">
+                <option value="thyroid issues">
+                <option value="genetics">
+                <option value="menopause">
+                <option value="urinary tract infection">
+                <option value="medication side effects">
+                <option value="depression">
+                <option value="Parkinson's disease">
+                <option value="Alzheimer's disease">
+                <option value="brain injury">
+                <option value="epilepsy">
+                <option value="anxiety">
+            </datalist>
+            
+            <button type="submit">Check Symptoms</button>
+        </form>
+    </div>
+</body>
+</html>

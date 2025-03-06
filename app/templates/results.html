@@ -56,8 +56,8 @@
     <div class="container">
         <h1>Analysis Results</h1>
         <ul>
-            {% for recommendation, match_rate in recommendations %}
-            <li>{{ recommendation }} (Match Rate: {{ match_rate }}%)</li>
+            {% for recommendation in recommendations %}
+            <li>{{ recommendation }}</li>
             {% endfor %}
         </ul>
         <a href="/">Go back</a>

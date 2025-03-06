@@ -6,56 +6,38 @@ class InferenceEngine:
             self.knowledge_base = json.load(f)
         print(f"Loaded knowledge base: {self.knowledge_base}")  # Debug print
 
-    def analyze_symptoms(self, symptoms_input, severity_input, risk_factors_input):
-        highest_match = 0
+    def analyze_symptoms(self, symptoms_input, severity_input):
         best_recommendation = "No matches found. Please visit a doctor for further evaluation."
         
         for rule in self.knowledge_base['symptoms']:
-            match_rate = self._calculate_match_rate(rule, symptoms_input, severity_input, risk_factors_input)
-            if match_rate > highest_match:
-                highest_match = match_rate
+            if self._check_rule(rule, symptoms_input, severity_input):
                 best_recommendation = self._generate_advice(rule)
+                break
         
-        recommendations = [(best_recommendation, highest_match)]
+        recommendations = [best_recommendation]
         
         print(f"Generated recommendations: {recommendations}")  # Debug print
         return recommendations
 
-    def _calculate_match_rate(self, rule, symptoms_input, severity_input, risk_factors_input):
-        total_checks = 0
-        matches = 0
-
+    def _check_rule(self, rule, symptoms_input, severity_input):
         # Check basic symptom match
-        if 'symptom' in rule:
-            total_checks += 1
-            if rule['symptom'] in symptoms_input:
-                matches += 1
-
+        if 'symptom' in rule and rule['symptom'] not in symptoms_input:
+            return False
+        
         # Check duration if applicable
-        if 'duration' in rule:
-            total_checks += 1
-            if rule['duration'] in severity_input:
-                matches += 1
+        if 'duration' in rule and rule['duration'] not in severity_input:
+            return False
 
         # Check severity if applicable
-        if 'severity' in rule:
-            total_checks += 1
-            if rule['severity'] in severity_input:
-                matches += 1
+        if 'severity' in rule and rule['severity'] not in severity_input:
+            return False
 
         # Check comorbidity (e.g., multiple symptoms together)
         if 'comorbid_symptoms' in rule:
-            total_checks += len(rule['comorbid_symptoms'])
-            matches += sum(1 for symptom in rule['comorbid_symptoms'] if symptom in symptoms_input)
+            if not all(symptom in symptoms_input for symptom in rule['comorbid_symptoms']):
+                return False
 
-        # Check risk factors if applicable
-        if 'risk_factors' in rule:
-            total_checks += len(rule['risk_factors'])
-            matches += sum(1 for risk_factor in rule['risk_factors'] if risk_factor in risk_factors_input)
-
-        if total_checks == 0:
-            return 0
-        return (matches / total_checks) * 100
+        return True
 
     def _generate_advice(self, rule):
         if 'advice' in rule:

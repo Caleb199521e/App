@@ -12,16 +12,13 @@ def home():
 def check_symptoms():
     user_input = request.form['symptoms'].split(',')
     severity_input = request.form['severity'].split(',')
-    risk_factors_input = request.form['risk_factors'].split(',')
     
     print(f"User input: {user_input}")  # Debug print
     print(f"Severity input: {severity_input}")  # Debug print
-    print(f"Risk factors input: {risk_factors_input}")  # Debug print
     
     recommendations = engine.analyze_symptoms(
         [symptom.strip() for symptom in user_input],
-        [severity.strip() for severity in severity_input],
-        [risk_factor.strip() for risk_factor in risk_factors_input]
+        [severity.strip() for severity in severity_input]
     )
     print(f"Recommendations passed to template: {recommendations}")  # Debug print
     

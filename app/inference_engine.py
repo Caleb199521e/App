@@ -6,41 +6,82 @@ class InferenceEngine:
             self.knowledge_base = json.load(f)
         print(f"Loaded knowledge base: {self.knowledge_base}")  # Debug print
 
-    def analyze_symptoms(self, symptoms_input, severity_input):
-        best_recommendation = "No matches found. Please visit a doctor for further evaluation."
-        
+    def analyze_symptoms(self, symptoms_input, duration_input, severity_input, associated_symptoms_input):
+        recommendations = []
+        partial_matches = []
+
         for rule in self.knowledge_base['symptoms']:
-            if self._check_rule(rule, symptoms_input, severity_input):
-                best_recommendation = self._generate_advice(rule)
-                break
-        
-        recommendations = [best_recommendation]
-        
+            match_percentage = self._calculate_match_percentage(rule, symptoms_input, duration_input, severity_input, associated_symptoms_input)
+            if match_percentage >= 50:  # Threshold for a full match
+                advice = self._generate_advice(rule)
+                recommendations.append({
+                    "reported_symptoms": symptoms_input,
+                    "potential_condition": rule.get('condition', 'Unknown condition'),
+                    "advice": advice
+                })
+            elif match_percentage > 0:  # Collect partial matches
+                partial_matches.append({
+                    "reported_symptoms": symptoms_input,
+                    "potential_condition": rule.get('condition', 'Unknown condition'),
+                    "match_percentage": match_percentage,
+                    "advice": rule.get('advice', 'Please visit a doctor for further evaluation.')
+                })
+
+        if not recommendations:
+            if partial_matches:
+                # Sort partial matches by match percentage
+                partial_matches.sort(key=lambda x: x["match_percentage"], reverse=True)
+                # Provide the top partial match as a suggestion
+                top_partial_match = partial_matches[0]
+                recommendations.append({
+                    "reported_symptoms": symptoms_input,
+                    "potential_condition": top_partial_match["potential_condition"],
+                    "advice": f"Partial match found ({top_partial_match['match_percentage']}% match). {top_partial_match['advice']}"
+                })
+            else:
+                recommendations.append({
+                    "reported_symptoms": symptoms_input,
+                    "potential_condition": "No matches found",
+                    "advice": "No clear match found. Please consult a healthcare professional for further evaluation."
+                })
+
         print(f"Generated recommendations: {recommendations}")  # Debug print
         return recommendations
 
-    def _check_rule(self, rule, symptoms_input, severity_input):
+    def _calculate_match_percentage(self, rule, symptoms_input, duration_input, severity_input, associated_symptoms_input):
+        total_checks = 0
+        matches = 0
+
         # Check basic symptom match
-        if 'symptom' in rule and rule['symptom'] not in symptoms_input:
-            return False
-        
+        if 'symptom' in rule:
+            total_checks += 1
+            if rule['symptom'] in symptoms_input:
+                matches += 1
+
         # Check duration if applicable
-        if 'duration' in rule and rule['duration'] not in severity_input:
-            return False
+        if 'duration' in rule:
+            total_checks += 1
+            if rule['duration'] in duration_input:
+                matches += 1
 
         # Check severity if applicable
-        if 'severity' in rule and rule['severity'] not in severity_input:
-            return False
+        if 'severity' in rule:
+            total_checks += 1
+            if rule['severity'] in severity_input:
+                matches += 1
 
         # Check comorbidity (e.g., multiple symptoms together)
         if 'comorbid_symptoms' in rule:
-            if not all(symptom in symptoms_input for symptom in rule['comorbid_symptoms']):
-                return False
+            total_checks += len(rule['comorbid_symptoms'])
+            matches += sum(1 for symptom in rule['comorbid_symptoms'] if symptom in symptoms_input or symptom in associated_symptoms_input)
 
-        return True
+        if total_checks == 0:
+            return 0
+        return (matches / total_checks) * 100  # Return match percentage
 
     def _generate_advice(self, rule):
-        if 'advice' in rule:
-            return rule['advice']
-        elif 'condition' in rule:
-            return f"Possible condition: {rule['condition']}"
+        advice = rule.get('advice', '')
+        condition = rule.get('condition', '')
+        if condition:
+            advice += f" Possible condition: {condition}"
+        return advice

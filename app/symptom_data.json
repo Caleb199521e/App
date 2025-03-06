@@ -1,203 +1,84 @@
 {
     "symptoms": [
-        {
-            "symptom": "fever",
-            "duration": "more than 3 days",
-            "severity": "high",
-            "advice": "Take antipyretics like acetaminophen or ibuprofen, stay hydrated, and rest. If fever persists, consult a doctor."
-        },
-        {
-            "symptom": "cough",
-            "comorbid_symptoms": ["sore throat", "runny nose"],
-            "condition": "Common Cold",
-            "severity": "moderate",
-            "advice": "Drink warm fluids, use cough drops, and rest. If symptoms persist or worsen, consult a doctor."
-        },
-        {
-            "symptom": "headache",
-            "duration": "less than 1 day",
-            "severity": "low",
-            "advice": "Drink plenty of water, rest in a dark room, and take over-the-counter pain relievers like acetaminophen or ibuprofen."
-        },
-        {
-            "symptom": "chest pain",
-            "duration": "more than 1 hour",
-            "severity": "high",
-            "advice": "Seek immediate medical attention. Do not ignore chest pain, as it could be a sign of a serious condition."
-        },
-        {
-            "symptom": "shortness of breath",
-            "duration": "persistent",
-            "severity": "high",
-            "advice": "Sit upright, try to stay calm, and use a rescue inhaler if available. If symptoms persist, consult a doctor."
-        },
-        {
-            "symptom": "dizziness",
-            "duration": "intermittent",
-            "severity": "moderate",
-            "advice": "Sit or lie down immediately, drink water, and avoid sudden movements. If dizziness persists, consult a doctor."
-        },
-        {
-            "symptom": "nausea",
-            "duration": "less than 1 day",
-            "severity": "low",
-            "advice": "Try ginger tea or ginger candies, stay hydrated, and rest. If nausea persists, consult a doctor."
-        },
-        {
-            "symptom": "vomiting",
-            "duration": "less than 1 day",
-            "severity": "moderate",
-            "advice": "Stay hydrated with small sips of water or oral rehydration solutions, and rest. If vomiting persists, consult a doctor."
-        },
-        {
-            "symptom": "diarrhea",
-            "duration": "less than 2 days",
-            "severity": "moderate",
-            "advice": "Stay hydrated with water or oral rehydration solutions, and avoid solid foods until symptoms improve. If diarrhea persists, consult a doctor."
-        },
-        {
-            "symptom": "constipation",
-            "duration": "more than 3 days",
-            "severity": "low",
-            "advice": "Increase fiber intake, drink plenty of water, and consider using a mild laxative. If constipation persists, consult a doctor."
-        },
-        {
-            "symptom": "back pain",
-            "duration": "more than 1 week",
-            "severity": "moderate",
-            "advice": "Apply heat or ice, take over-the-counter pain relievers, and avoid heavy lifting. If back pain persists, consult a doctor."
-        },
-        {
-            "symptom": "joint pain",
-            "duration": "persistent",
-            "severity": "moderate",
-            "advice": "Apply ice or heat, take over-the-counter pain relievers, and rest the affected joint. If joint pain persists, consult a doctor."
-        },
-        {
-            "symptom": "sore throat",
-            "duration": "less than 1 week",
-            "severity": "low",
-            "advice": "Gargle with warm salt water, drink warm fluids, and use throat lozenges. If sore throat persists, consult a doctor."
-        },
-        {
-            "symptom": "runny nose",
-            "duration": "less than 1 week",
-            "severity": "low",
-            "advice": "Use a decongestant, drink plenty of fluids, and rest. If runny nose persists, consult a doctor."
-        },
-        {
-            "symptom": "rash",
-            "duration": "less than 1 week",
-            "severity": "low",
-            "advice": "Apply anti-itch cream, keep the area clean and dry, and avoid scratching. If rash persists, consult a doctor."
-        },
-        {
-            "symptom": "itching",
-            "duration": "persistent",
-            "severity": "low",
-            "advice": "Apply anti-itch cream, keep the area clean and dry, and avoid scratching. If itching persists, consult a doctor."
-        },
-        {
-            "symptom": "fatigue",
-            "duration": "persistent",
-            "severity": "moderate",
-            "advice": "Ensure adequate sleep, eat a balanced diet, and stay hydrated. If fatigue persists, consult a doctor."
-        },
-        {
-            "symptom": "blurred vision",
-            "duration": "intermittent",
-            "severity": "moderate",
-            "advice": "Rest your eyes, avoid screen time, and stay hydrated. If blurred vision persists, consult an eye doctor."
-        },
-        {
-            "symptom": "ear pain",
-            "duration": "less than 1 week",
-            "severity": "moderate",
-            "advice": "Apply a warm compress, use over-the-counter pain relievers, and keep the ear dry. If ear pain persists, consult a doctor."
-        },
-        {
-            "symptom": "abdominal pain",
-            "duration": "less than 1 day",
-            "severity": "moderate",
-            "advice": "Rest, stay hydrated, and avoid solid foods until symptoms improve. If abdominal pain persists, consult a doctor."
-        },
-        {
-            "symptom": "swelling",
-            "duration": "persistent",
-            "severity": "moderate",
-            "advice": "Apply ice, elevate the affected area, and rest. If swelling persists, consult a doctor."
-        },
-        {
-            "symptom": "weight loss",
-            "duration": "unintentional",
-            "severity": "high",
-            "advice": "Maintain a balanced diet and monitor your weight. If weight loss persists, consult a doctor."
-        },
-        {
-            "symptom": "weight gain",
-            "duration": "unintentional",
-            "severity": "moderate",
-            "advice": "Maintain a balanced diet and exercise regularly. If weight gain persists, consult a doctor."
-        },
-        {
-            "symptom": "hair loss",
-            "duration": "persistent",
-            "severity": "low",
-            "advice": "Use gentle hair care products, avoid tight hairstyles, and manage stress. If hair loss persists, consult a dermatologist."
-        },
-        {
-            "symptom": "night sweats",
-            "duration": "persistent",
-            "severity": "moderate",
-            "advice": "Keep your bedroom cool, wear light clothing, and stay hydrated. If night sweats persist, consult a doctor."
-        },
-        {
-            "symptom": "frequent urination",
-            "duration": "persistent",
-            "severity": "moderate",
-            "advice": "Stay hydrated, avoid caffeine and alcohol, and monitor your symptoms. If frequent urination persists, consult a doctor."
-        },
-        {
-            "symptom": "dry mouth",
-            "duration": "persistent",
-            "severity": "low",
-            "advice": "Stay hydrated, chew sugar-free gum, and avoid caffeine and alcohol. If dry mouth persists, consult a doctor."
-        },
-        {
-            "symptom": "loss of appetite",
-            "duration": "persistent",
-            "severity": "moderate",
-            "advice": "Eat small, frequent meals, and try to include nutrient-dense foods. If loss of appetite persists, consult a doctor."
-        },
-        {
-            "symptom": "tremors",
-            "duration": "persistent",
-            "severity": "moderate",
-            "advice": "Avoid caffeine, practice relaxation techniques, and consult a doctor if tremors persist."
-        },
-        {
-            "symptom": "memory loss",
-            "duration": "persistent",
-            "severity": "high",
-            "advice": "Engage in mental exercises, maintain a healthy diet, and consult a doctor if memory loss persists."
-        },
-        {
-            "symptom": "confusion",
-            "duration": "persistent",
-            "severity": "high",
-            "advice": "Ensure a safe environment, stay hydrated, and seek immediate medical attention if confusion persists."
-        },
-        {
-            "symptom": "seizures",
-            "duration": "intermittent",
-            "severity": "high",
-            "advice": "Ensure a safe environment, avoid triggers, and seek immediate medical attention if seizures occur."
-        },
-        {
-            "symptom": "fainting",
-            "duration": "intermittent",
-            "severity": "high",
-            "advice": "Lie down with your legs elevated, stay hydrated, and seek immediate medical attention if fainting persists."
-        }
+      {
+        "symptom": "fever",
+        "severity": "high",
+        "duration": "more than 3 days",
+        "comorbid_symptoms": ["cough", "difficulty breathing", "fatigue", "body aches", "loss of taste or smell"],
+        "condition": "COVID-19",
+        "advice": "Isolate yourself, get tested, stay hydrated, and seek medical attention if symptoms worsen."
+      },
+      {
+        "symptom": "cough",
+        "severity": "low",
+        "duration": "less than 1 week",
+        "comorbid_symptoms": ["sore throat", "runny nose", "sneezing", "mild fever"],
+        "condition": "Common Cold",
+        "advice": "Drink warm fluids, get rest, and take decongestants if needed."
+      },
+      {
+        "symptom": "fever",
+        "severity": "high",
+        "duration": "less than 1 week",
+        "comorbid_symptoms": ["sore throat", "runny nose", "cough", "body aches", "fatigue"],
+        "condition": "Flu",
+        "advice": "Rest, stay hydrated, take over-the-counter flu medication, and consult a doctor if symptoms persist."
+      },
+      {
+        "symptom": "fever",
+        "severity": "high",
+        "duration": "more than 3 days",
+        "comorbid_symptoms": ["rash", "runny nose", "cough", "red eyes"],
+        "condition": "Measles",
+        "advice": "Isolate yourself, take fever reducers, stay hydrated, and consult a doctor if symptoms worsen."
+      },
+      {
+        "symptom": "chronic cough",
+        "severity": "high",
+        "duration": "persistent",
+        "comorbid_symptoms": ["fever", "night sweats", "weight loss", "fatigue", "chest pain"],
+        "condition": "Tuberculosis",
+        "advice": "Get a TB test, avoid close contact with others, and seek medical treatment immediately."
+      },
+      {
+        "symptom": "fever",
+        "severity": "high",
+        "duration": "persistent",
+        "comorbid_symptoms": ["vomiting", "diarrhea", "abdominal pain", "weakness", "loss of appetite"],
+        "condition": "Typhoid",
+        "advice": "Drink plenty of fluids, avoid contaminated food and water, and take antibiotics as prescribed."
+      },
+      {
+        "symptom": "cough",
+        "severity": "high",
+        "duration": "more than 1 week",
+        "comorbid_symptoms": ["fever", "chest pain", "difficulty breathing", "chills"],
+        "condition": "Pneumonia",
+        "advice": "Seek medical attention, take antibiotics if prescribed, and use a humidifier to ease breathing."
+      },
+      {
+        "symptom": "chest pain",
+        "severity": "high",
+        "duration": "acute",
+        "comorbid_symptoms": ["shortness of breath", "dizziness", "nausea", "cold sweat"],
+        "condition": "Heart Attack",
+        "advice": "Seek emergency medical attention immediately."
+      },
+      {
+        "symptom": "frequent urination",
+        "severity": "moderate",
+        "duration": "persistent",
+        "comorbid_symptoms": ["excessive thirst", "unexplained weight loss", "fatigue"],
+        "condition": "Diabetes",
+        "advice": "Monitor blood sugar levels, follow a healthy diet, exercise regularly, and consult a doctor for medication."
+      },
+      {
+        "symptom": "shortness of breath",
+        "severity": "high",
+        "duration": "intermittent",
+        "comorbid_symptoms": ["wheezing", "cough", "chest tightness"],
+        "condition": "Asthma",
+        "advice": "Use inhalers as prescribed, avoid triggers, and seek medical attention if symptoms worsen."
+      }
     ]
-}
+  }

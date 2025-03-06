@@ -41,6 +41,19 @@
             border-radius: 4px;
             border: 1px solid #ddd;
         }
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-bar-inner {
+            height: 20px;
+            background-color: #4caf50;
+            width: 0;
+            transition: width 0.3s;
+        }
         a {
             display: inline-block;
             margin-top: 20px;
@@ -57,7 +70,14 @@
         <h1>Analysis Results</h1>
         <ul>
             {% for recommendation in recommendations %}
-            <li>{{ recommendation }}</li>
+            <li>
+                <strong>Reported Symptoms:</strong> {{ recommendation.reported_symptoms | join(', ') }}<br>
+                <strong>Potential Condition:</strong> {{ recommendation.potential_condition }}<br>
+                <strong>Advice:</strong> {{ recommendation.advice }}<br>
+                <div class="progress-bar">
+                    <div class="progress-bar-inner" style="width: {{ recommendation.match_percentage }}%;"></div>
+                </div>
+            </li>
             {% endfor %}
         </ul>
         <a href="/">Go back</a>

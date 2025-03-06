@@ -3,15 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Symptom Checker</title>
+    <title>Health Symptom Checker - Associated Symptoms</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1 class="title">Health Symptom Checker</h1>
+    <h1 class="title">Health Symptom Checker - Associated Symptoms</h1>
     <div class="main-form">
-        <form action="/check-symptoms" method="POST">
-            <label for="symptoms">Enter your symptoms (comma separated):</label>
-            <input type="text" id="symptoms" name="symptoms" list="symptom-suggestions" placeholder="e.g., fever, cough, headache" required>
+        <form action="/associated-symptoms" method="POST">
+            <input type="hidden" name="symptoms" value="{{ ','.join(symptoms) }}">
+            
+            <label for="selected_symptoms">Selected Symptoms:</label>
+            <ul id="selected_symptoms">
+                {% for symptom in symptoms %}
+                <li>{{ symptom }}</li>
+                {% endfor %}
+            </ul>
+
+            <label for="duration">Enter duration of symptoms:</label>
+            <input type="text" id="duration" name="duration" list="duration-suggestions" placeholder="e.g., more than 3 days, less than 1 day" required>
+            <datalist id="duration-suggestions">
+                <option value="more than 3 days">
+                <option value="less than 1 day">
+                <option value="persistent">
+                <option value="intermittent">
+            </datalist>
+
+            <label for="severity">Enter severity of symptoms:</label>
+            <input type="text" id="severity" name="severity" list="severity-suggestions" placeholder="e.g., mild, moderate, severe" required>
+            <datalist id="severity-suggestions">
+                <option value="high">
+                <option value="moderate">
+                <option value="low">
+            </datalist>
+
+            <label for="associated_symptoms">Enter any other associated symptoms:</label>
+            <input type="text" id="associated_symptoms" name="associated_symptoms" list="symptom-suggestions" placeholder="e.g., fatigue, body aches, loss of taste or smell">
             <datalist id="symptom-suggestions">
                 <option value="fever">
                 <option value="cough">
@@ -47,8 +73,8 @@
                 <option value="seizures">
                 <option value="fainting">
             </datalist>
-            
             <button type="submit">Check Symptoms</button>
+            <button type="button" onclick="window.history.back();" style="background-color: red; margin-top: 20px;">Return to Home Page</button>
         </form>
     </div>
 </body>

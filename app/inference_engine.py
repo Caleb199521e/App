@@ -1,10 +1,24 @@
 import json
+import json
+import nltk
+from nltk.corpus import wordnet
+
+# Ensure WordNet is downloaded
+nltk.download('wordnet')
 
 class InferenceEngine:
     def __init__(self, knowledge_base_file):
         with open(knowledge_base_file, 'r') as f:
             self.knowledge_base = json.load(f)
         print(f"Loaded knowledge base: {self.knowledge_base}")  # Debug print
+
+    def _get_synonyms(self, word):
+        """Retrieve synonyms for a given word using WordNet."""
+        synonyms = set()
+        for syn in wordnet.synsets(word):
+            for lemma in syn.lemmas():
+                synonyms.add(lemma.name().replace('_', ' '))  # Replace underscores with spaces
+        return synonyms
 
     def analyze_symptoms(self, symptoms_input, duration_input, severity_input, associated_symptoms_input):
         recommendations = []
